@@ -20,12 +20,12 @@ def store(request):
 
 def cart(request):
 	data = cartData(request)
-
+	email=request.user.email
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
 
-	context = {'items':items, 'order':order, 'cartItems':cartItems}
+	context = {'items':items, 'order':order, 'cartItems':cartItems,'email':email}
 	return render(request, 'store/cart.html', context)
 
 def checkout(request):
@@ -34,7 +34,7 @@ def checkout(request):
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
-	
+
 	if request.method == 'POST':
 		form = OrdererForm(request.POST)
 		if form.is_valid():
