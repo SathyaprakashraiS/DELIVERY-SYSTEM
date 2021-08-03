@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
+    'storages',
+    'allauth',  
+    'allauth.account', 
+    'allauth.socialaccount',  
+    'allauth.socialaccount.providers.google',
     'store.apps.StoreConfig',
 ]
 
@@ -74,7 +79,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
+SITE_ID = 1
 
+
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '576119017330-jpt7fm9m1k2476fd8aadl6lrr4smstd0.apps.googleusercontent.com',
+            'secret': '5TOAp4zn8H8bwmcWWibZhNBu',
+            'key': ''
+        }
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -118,6 +143,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+
+LOGIN_REDIRECT_URL = "/main"
+LOGOUT_REDIRECT_URL = "/main"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
