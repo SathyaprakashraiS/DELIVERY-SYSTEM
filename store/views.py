@@ -34,13 +34,7 @@ def checkout(request):
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
-
-	'''form=OrdererForm
-
-	if request.method=='POST':
-		form=OrdererForm(request.POST)
-		if form.is_valid():
-			form.save()'''
+	
 	if request.method == 'POST':
 		form = OrdererForm(request.POST)
 		if form.is_valid():
