@@ -5,6 +5,7 @@ import datetime
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
 from .forms import OrdererForm
+from datetime import date
 
 def store(request):
 	data = cartData(request)
@@ -25,7 +26,7 @@ def cart(request):
 	order = data['order']
 	items = data['items']
 
-	context = {'items':items, 'order':order, 'cartItems':cartItems,'email':email}
+	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
 
 def checkout(request):
@@ -99,3 +100,8 @@ def processOrder(request):
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)
+
+def orderhistory(request):
+	email=request.user.email
+	obj=Orderer.objects.all().filter(email=request.user.email)
+	return render(request,'ohistory.html',{'email':email,'obj':obj})
