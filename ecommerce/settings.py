@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  
     'allauth.socialaccount.providers.google',
     'store.apps.StoreConfig',
+    'city',
+    'deliveryperson',
 ]
 
 MIDDLEWARE = [
@@ -148,8 +150,7 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = "/main"
 LOGOUT_REDIRECT_URL = "/main"
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
 
 STATIC_URL = '/static/'
 
