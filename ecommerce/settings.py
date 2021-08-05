@@ -46,11 +46,12 @@ INSTALLED_APPS = [
     'allauth.account', 
     'allauth.socialaccount',  
     'allauth.socialaccount.providers.google',
-    'store.apps.StoreConfig',
+    'store',
     'city',
     'deliveryperson',
 ]
 
+AUTH_USER_MODEL = 'store.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

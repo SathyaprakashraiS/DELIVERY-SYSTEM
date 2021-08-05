@@ -6,6 +6,28 @@ from .models import *
 from .utils import cookieCart, cartData, guestOrder
 from .forms import OrdererForm
 from datetime import date
+from django.contrib import messages
+from .forms import CustomUserForm
+
+def viewprofile(request):
+    
+    if request.method == 'POST':
+              e_form = CustomUserForm(request.POST,instance=request.user)
+             
+        
+              if e_form.is_valid():
+                  e_form.save()
+              
+                  messages.success(request,f'your account has been updated!')
+                  return redirect('dispprofile')
+    else:
+        e_form = CustomUserForm(instance=request.user)
+          
+    context ={
+        'e_form':e_form,
+
+    }
+    return render(request,"dbedit.html",context)
 
 def store(request):
 	data = cartData(request)

@@ -1,6 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
+from ecommerce import settings
 from django.db.models.signals import post_save
+from django.contrib.auth.models import AbstractUser
+# Create your models here.
+User = settings.AUTH_USER_MODEL
+
+class CustomUser(AbstractUser):
+    is_dboy = models.BooleanField(default=False)	
+    city =models.CharField(max_length=10,default='city')
 # Create your models here.
 
 class Orderer(models.Model):
