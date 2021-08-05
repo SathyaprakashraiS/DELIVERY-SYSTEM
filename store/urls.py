@@ -1,5 +1,4 @@
-from django.urls import path
-
+from django.urls import path,include
 from . import views
 
 urlpatterns = [
@@ -11,4 +10,5 @@ urlpatterns = [
 	path('update_item/', views.updateItem, name="update_item"),
 	path('process_order/', views.processOrder, name="process_order"),
 	path('history/', views.orderhistory, name="orderhistory"),
+	path('delivery/',include('deliveryperson.urls')),
 ]

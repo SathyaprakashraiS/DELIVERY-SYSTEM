@@ -79,7 +79,11 @@
 	        <a class="nav-link" href="history/">History <span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
-
+	 	{% if user.is_dboy %}
+	      <li class="nav-item active">
+	        <a class="nav-link" href="delivery/">Delivery <span class="sr-only">(current)</span></a>
+	      </li>
+	 	{% endif %}
 	    </ul>
 	    {% if user.is_authenticated %}
 	    <div class="form-inline my-2 my-lg-0">

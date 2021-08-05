@@ -2,6 +2,8 @@ from django.db import models
 from ecommerce import settings
 from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
+from django.db.models.functions import Lower
+
 # Create your models here.
 User = settings.AUTH_USER_MODEL
 
@@ -15,16 +17,19 @@ class Orderer(models.Model):
 	email = models.CharField(max_length=200)
 	address1 = models.CharField(max_length=200,default="addressl line 1")
 	address2 = models.CharField(max_length=200,default="addressl line 2")
-	city = models.CharField(max_length=200)
+	city = models.CharField(blank=True,max_length=200)
 	state = models.CharField(max_length=200)
 	zipcode = models.CharField(max_length=200)
 	country = models.CharField(max_length=200)
 	count=models.FloatField(default=0)
 	quantity=models.FloatField(default=0)
 
+	def save(self,*args,**kwargs):
+		self.city=self.city.lower()
+		super().save(*args,**kwargs)
 
 	def __str__(self):
-		return self.name
+		return (self.name)
 
 class Customer(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
