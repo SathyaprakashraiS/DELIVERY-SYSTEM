@@ -7,7 +7,8 @@ from django.db.models.functions import Lower
 # Create your views here.
 def restrictionfinder(request):
 	dboycity=request.user.city
-	modif=Orderer.objects.values_list('address1')
+	linkgen1=Orderer.objects.values_list('add1link')
+	linkgen2=Orderer.objects.values_list('add2link')
 	dlist=Orderer.objects.all().filter(city=dboycity.lower())
 	lor=City.objects.all().filter(name=dboycity.lower())
 	'''
@@ -15,4 +16,4 @@ def restrictionfinder(request):
 	dlist=Orderer.objects.all().filter(city=Lower(dboycity))
 	lor=City.objects.all()
 	'''
-	return render(request,'delivery.html',{'dboycity':dboycity,'dlist':dlist,'lor':lor,'modif':modif})
+	return render(request,'delivery.html',{'dboycity':dboycity,'dlist':dlist,'lor':lor,'linkgen1':linkgen1,'linkgen2':linkgen2})

@@ -28,6 +28,10 @@ class Orderer(models.Model):
 
 	def save(self,*args,**kwargs):
 		self.city=self.city.lower()
+		self.add1link=self.address1.replace(",",",+")
+		self.add1link=self.address1.replace(" ","+")
+		self.add2link=self.address2.replace(",",",+")
+		self.add2link=self.address2.replace(" ","+")
 		super().save(*args,**kwargs)
 
 	def __str__(self):
