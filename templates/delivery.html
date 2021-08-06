@@ -69,8 +69,8 @@
 	<br>
 	  <p>{{i.name}}</p>
 	  <p>{{i.address1}}</p>
-	  <p>{{"i.address1" |to_and }}</p>
-	  
+	  <p>{{"i.ad,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,dress1" |to_and }}</p>
+	  <p>{{ "(sathya prakash rai,mtech,cse)" |to_and}}</p>
 	  <p>{{i.address2}}</p>
 	  <p>{{i.city}}</p>
 	  <p>{{i.state}}</p>
@@ -83,6 +83,9 @@
 	<br>
 	{% endfor %}
 	
+	{% for i in modif %}
+	<p>{{ "{i}" |to_and }}</p>
+	{% endfor %}
 	<!-- https://www.google.co.in/maps/place/lig+colony,+k+k+nagar,+madurai,+tamil+nadu -->
 
 	<!--

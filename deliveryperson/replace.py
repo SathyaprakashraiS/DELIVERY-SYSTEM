@@ -4,4 +4,8 @@ register = template.Library()
 
 @register.filter
 def to_and(value):
-    return value.replace(",",",+")
+    value=value.replace(",",",+")
+    value=value.replace(" ","+")
+    value=value.replace("("," ")
+    value=value.replace(")"," ")
+    return value
