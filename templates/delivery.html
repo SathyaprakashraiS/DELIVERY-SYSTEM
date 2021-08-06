@@ -12,8 +12,8 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}"><b>SHOP</b></a>
+	<nav id="nav" class="navbar navbar-expand-lg">
+	  <a id="txt" class="navbar-brand" href="{% url 'store' %}"><b>SHOP</b></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -25,12 +25,12 @@
 	      </li>-->
 	      {% if user.is_authenticated %}
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/history">History <span class="sr-only">(current)</span></a>
+	        <a id="txt" class="nav-link" href="/history">History <span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
 	 	{% if user.is_dboy %}
 	      <li class="nav-item active">
-	        <a class="nav-link" href="delivery/" style="color:#FFFFFF"><b>Delivery </b><span class="sr-only">(current)</span></a>
+	        <a id="txt" class="nav-link" href="delivery/" style="color:#FFFFFF"><b>Delivery </b><span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
 
@@ -63,31 +63,55 @@
 	    {% endif %}
 	  </div>
 	</nav>
-	<h1>WORK AGUTHU LOL</h1>
-	<p>{{dboycity}}</p>
-	{% for i in dlist %}
-	<br>
-	  <p>{{i.name}}</p>
-	  <p>{{i.address1}}</p>
+	
+	<div class="container">
+
+		
+		
+	
+	<h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:#FFFFFF;text-align: center;">DELIVERY CART</h1>
+  <ul class="cards">
+    {% for i in dlist %}
+    <li class="cards_item">
+        <div class="card_content">
+         <p><b>Customer Name:</b>{{i.name}}</p>
+	  <p><b>Customer Address:</b></p>
+	  <p>{{i.address1}},</p>
 	  <p>{{i.address2}}</p>
-	  <p>{{i.city}}</p>
-	  <p>{{i.state}}</p>
-	  <p>{{i.zipcode}}</p>
-	<br>
-	{% endfor %}
+	  <p><b>City:</b>{{i.city}}</p>
+	  <p><b>State:</b>{{i.state}}</p>
+	  <p><b>Zipcode:</b>{{i.zipcode}}</p>
+	  {% for j in lor %}
+		{% if j.name == i.city %}
+	  		<p>restriction level is :{{j.restrictionlevel}}</p>
+		{% endif %}
+	  {% endfor %}
+	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
+	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
+        </div>
+    </li>
+    {% endfor %}
+  </ul>
+		<!--
 	{% for i in lor %}
 	<br>
 	  <p>restriction level is :{{i.restrictionlevel}}</p>
 	<br>
 	{% endfor %}
+	-->
 	
+	<!--
 	{% for i in linkgen1 %}
 	<p>{{i}}</p>
 	{% endfor %}
-
+	-->
+	<!--
 	{% for i in linkgen2 %}
 	<p>{{i}}</p>
 	{% endfor %}
+	-->
+</div>
+</div>
 	<!-- https://www.google.co.in/maps/place/lig+colony,+k+k+nagar,+madurai,+tamil+nadu -->
 
 	<!--
@@ -99,6 +123,137 @@
 
 
 </body>
+<style type="text/css">
+body
+{
+	background:linear-gradient(240deg,rgba(192, 25, 25, 0.753),rgb(6, 19, 204));
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+	#nav{
+		background-color:black;
+	}
+	#txt{
+		color:white;
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	}
+	
+	.inner{
+		width:400px;
+		margin-top:20px;
+		display:flex;
+		border:5px solid black;
+		flex-flow: column;
+		align-items: center;
+		
+	}
+	#b{
+		color:black;
+	}
+.buttondirection{
+  background-color: #006BFF; /* Green */
+  border-radius: 15%;
+}
+
+.buttondirection:hover{
+  transform: scale(1.15);
+}
+.buttondelivered{
+  background-color: #2CFF00; /* Green */
+  border-radius: 15%;
+}
+
+.buttondelivered:hover{
+  transform: scale(1.15);
+}
+
+.main{
+  background-color: #FFFFFF;/* GIVE COLOR AROUND CARDS DIVISION */
+  max-width: 100%;
+  margin: 0 auto;
+}
+/*
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+*/
+img {
+  height: auto;
+  width: 100%;
+  height:300px;
+  vertical-align: middle;
+}
+
+.btn {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  width:100%;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+  background: #FFFFFF;
+  border-radius: 10%;
+}
+
+@media (max-width: 480px)
+{ 
+  .cards_item {
+  width:100%;
+  display: flex;
+  padding: 1rem;
+}
+}
+</style>
 </html>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 

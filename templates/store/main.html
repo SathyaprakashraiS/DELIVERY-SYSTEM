@@ -63,8 +63,8 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}"><b>SHOP</b></a>
+	<nav id="nav" class="navbar navbar-expand-lg ">
+	  <a id="txt"class="navbar-brand" href="#"><b>SHOP</b></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -76,17 +76,17 @@
 	      </li>-->
 	      {% if user.is_authenticated %}
 	      <li class="nav-item active">
-	        <a class="nav-link" href="history/">History <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" style="color:#FFFFFF" href="history/">History <span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
 	 	{% if user.is_dboy %}
 	      <li class="nav-item active">
-	        <a class="nav-link" href="delivery/">Delivery <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" style="color:#FFFFFF" href="delivery/">Delivery <span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
 	    </ul>
 	    {% if user.is_authenticated %}
-	    <div class="form-inline my-2 my-lg-0">
+	    <div id="log" class="form-inline my-2 my-lg-0">
 	     	<a href="login/"class="btn btn-warning">{{request.user.username}}</a>
 	     	
 	     	<a href="{% url 'cart' %}">
@@ -126,4 +126,23 @@
 
 	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 </body>
+
+<style type="text/css">
+	#nav{
+		background-color:rgba(0, 0, 0, 0.932)
+	}
+
+	#txt{
+		color:rgb(255, 255, 255);
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	}
+	body{
+		background:linear-gradient(240deg,rgba(192, 25, 25, 0.753),rgb(6, 19, 204));
+	}
+	.container{
+		background:linear-gradient(240deg,rgba(192, 25, 25, 0.753),rgb(6, 19, 204));
+	}
+
+
+</style>
 </html>
