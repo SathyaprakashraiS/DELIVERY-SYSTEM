@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load to_and %}
 <html>
 <head>
 	<title>HISTORY</title>
@@ -68,6 +69,8 @@
 	<br>
 	  <p>{{i.name}}</p>
 	  <p>{{i.address1}}</p>
+	  <p>{{"i.address1" |to_and }}</p>
+	  
 	  <p>{{i.address2}}</p>
 	  <p>{{i.city}}</p>
 	  <p>{{i.state}}</p>
@@ -79,6 +82,9 @@
 	  <p>restriction level is :{{i.restrictionlevel}}</p>
 	<br>
 	{% endfor %}
+	
+	<!-- https://www.google.co.in/maps/place/lig+colony,+k+k+nagar,+madurai,+tamil+nadu -->
+
 	<!--
 		PRE MADE EXISTING CONTAINER ALREADY MADE CAN BE USED TO CENTER CONTAINERS
      <div class="container">
