@@ -124,6 +124,6 @@ def processOrder(request):
 	return JsonResponse('Payment submitted..', safe=False)
 
 def orderhistory(request):
-	email=request.user.email
-	obj=Orderer.objects.all().filter(email=request.user.email)
-	return render(request,'ohistory.html',{'email':email,'obj':obj})
+	uemail=request.user.email
+	obj=Orderer.objects.all().filter(email=uemail)
+	return render(request,'ohistory.html',{'uemail':uemail,'obj':obj})

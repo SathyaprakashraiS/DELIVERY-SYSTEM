@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'store',
     'city',
     'deliveryperson',
+    'crispy_forms',
 ]
 
 AUTH_USER_MODEL = 'store.CustomUser'

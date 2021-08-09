@@ -32,6 +32,14 @@
    					{{form.zipcode}}<br>
    					<label for="country">country:</label>
    					{{form.country}}<br>
+   					<label for="landmark">landmark:</label>
+   					{{form.landmark}}<br>
+   					<label for="customerhousetype">House type:</label>
+   					<select name="customerhousetype">
+   						<option id="customerhousetype" name="customerhousetype" value="1">house</option>
+   						<option id="customerhousetype" name="customerhousetype" value="2">apartment</option>
+   					</select>
+   					<br>
    					<label for="count">count:</label>
   					<input type="text" id="count" name="count" value="{{order.get_cart_items}}" readonly><br>
   					<label for="quantity">quantity:</label>
@@ -97,7 +105,7 @@
 				<div class="cart-row">
 					<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
 					<div style="flex:2"><p>{{item.product.name}}</p></div>
-					<div style="flex:1"><p>${{item.product.price|floatformat:2}}</p></div>
+					<div style="flex:1"><p>₹{{item.product.price|floatformat:2}}</p></div>
 					<div style="flex:1"><p>x{{item.quantity}}</p></div>
 				</div>
 				{% endfor %}

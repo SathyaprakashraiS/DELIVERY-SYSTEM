@@ -23,8 +23,10 @@ class Orderer(models.Model):
 	state = models.CharField(max_length=200)
 	zipcode = models.CharField(max_length=200)
 	country = models.CharField(max_length=200)
+	landmark=models.CharField(max_length=500,default="direction from home to nearest Landmark")
 	count=models.FloatField(default=0)
 	quantity=models.FloatField(default=0)
+	customerhousetype=models.CharField(max_length=5,default='1')
 
 	def save(self,*args,**kwargs):
 		self.city=self.city.lower()
