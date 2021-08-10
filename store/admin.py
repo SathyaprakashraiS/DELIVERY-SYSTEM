@@ -5,9 +5,9 @@ from .models import CustomUser
 from .forms import CustomUserForm
 
 class CustomUserAdmin(UserAdmin):
-   UserAdmin.list_display += ('is_dboy','city') 
-   UserAdmin.list_filter += ('is_dboy','city')
-   UserAdmin.fieldsets += (('is_dboy', {'fields': ('is_dboy','city')}),) 
+   UserAdmin.list_display += ('is_dboy','city','formsubmitted','vacinated') 
+   UserAdmin.list_filter += ('is_dboy','city','formsubmitted','vacinated')
+   UserAdmin.fieldsets += (('is_dboy', {'fields': ('is_dboy','city','formsubmitted','vacinated')}),) 
   
   
 

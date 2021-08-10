@@ -10,6 +10,8 @@ User = settings.AUTH_USER_MODEL
 class CustomUser(AbstractUser):
     is_dboy = models.BooleanField(default=False)	
     city =models.CharField(max_length=10,default='city')
+    formsubmitted = models.BooleanField(default=False)
+    vacinated = models.IntegerField(default=0)		
 # Create your models here.
 
 class Orderer(models.Model):
