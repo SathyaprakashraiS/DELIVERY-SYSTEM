@@ -65,37 +65,21 @@
 	    {% endif %}
 	  </div>
 	</nav>
-	<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-   {{ form.as_p }}
-  <button type="submit">Upload</button>
-</form>
-<!--
-<form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="name">name:</label>
-            {{form.name}}<br>
-            <label for="email">email:</label>
-            {{form.email}}<br>
-            <label for="address">address1:</label>
-            {{form.address1}}<br>
-            <label for="address">address2:</label>
-            {{form.address2}}<br>
-            <label for="city">city:</label>
-            {{form.city}}<br>
-            <label for="state">state:</label>
-            {{form.state}}<br>
-            <label for="zipcode">zipcode:</label>
-            {{form.zipcode}}<br>
-            <label for="country">country:</label>
-            {{form.country}}<br>
-            <label for="landmark">landmark:</label>
-            {{form.landmark}}<br>
-            <button type="submit">Submit</button>
-            
-        </form>
-
--->
+  
+	{% if user.is_dboy %}
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+				<label for="name">NAME:</label>
+				<input type="text" id="name" name="name" value="{{request.user.username}}" readonly><br>
+				<label for="vacday">DAY WHEN YOU WHERE VACCINATED:</label>{{form.vacday}}
+				<br>
+				<label for="dosecount">DOSES VACCINATED:</label>{{form.dosecount}}
+				<br>
+				<label for="prooffile">VACCINATION CERTIFICATE:</label>{{form.prooffile}}
+				<br>
+				<button type="submit">SUBMIT</button>
+		</form>
+	{% endif %}
 
 <style type="text/css">
 body
