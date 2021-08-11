@@ -1,5 +1,15 @@
 from django.shortcuts import render
+from .forms import *
+from .models import *
 
 # Create your views here.
 def vacform(request):
-	return render(request,"vacform.html",{})
+	if request.method == 'POST':
+		form = VacForm(request.POST,request.FILES)
+		if form.is_valid():
+			form.save()
+			return render(request, 'main.html', {'form': form})
+	else:
+		form = VacForm()
+
+	return render(request,"vacform.html",{'form':form})

@@ -8,6 +8,7 @@ from datetime import datetime
 class Vform(models.Model):
 	name = models.CharField(max_length=200, null=True)
 	vacday=models.DateField("mm/dd/yyyy",auto_now_add=False,auto_now=False,blank=False,null=True)
+	dosecount=models.IntegerField(default=0)
 	prooffile=models.FileField(upload_to='images', default='images/none.pdf')
 
 	def save(self,*args,**kwargs):

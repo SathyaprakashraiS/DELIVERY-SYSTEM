@@ -7,4 +7,4 @@ class VacForm(forms.ModelForm):
     """Form for the image model"""
     class Meta:
        model = Vform
-       fields = ('name','vacday','prooffile')
+       fields = ('name','vacday','dosecount','prooffile')
