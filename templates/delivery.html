@@ -75,10 +75,16 @@
 	
 	<h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:#FFFFFF;text-align: center;">DELIVERY LIST</h1>
   <ul class="cards">
-    {% for i in dlist %}
+
+  	{% if user.vacinated == 2 %}
+	{% for i in listreslev3 %}
     <li class="cards_item">
+	<form id="form-id" method="post" action="unidel/">
         <div class="card_content">
-         <p><b>Customer Name:</b>{{i.name}}</p>
+	
+				  {% csrf_token %}
+         <b>Customer Name:</b><p>{{i.name}}</p>
+			   <input type="hidden" name="custom" value="{{i.pk}}" />
 			   <p><b>Customer Address:</b></p>
 			   <p>{{i.address1}},</p>
 			   <p>{{i.address2}}</p>
@@ -86,8 +92,9 @@
 			   <p><b>State:</b>{{i.state}}</p>
 			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
 			   <p><b>restriction level is :</b>{{i.reslev}}</p>
-			   <a href="unidel/" type="text" name="orderername" >press</a>
-			   <button type="text" class="buttondirection" name="orderername" value="{{i.name}}" href="unidel/">Pick</button>
+			 <!-- <a href="unidel/" type="text" name="orderername" >press</a>--> 
+			   <button type="submit">Pick</button>
+			</form>		
 	  <!--
 	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
 	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
@@ -95,8 +102,73 @@
         </div>
     </li>
     {% endfor %}
+
+
   </ul>
+  {% endif %}
+  {% if user.vacinated == 1 %}
+  {% for i in listreslev2 %}
+    <li class="cards_item">
+	<form id="form-id" method="post" action="unidel/">
+        <div class="card_content">
+	
+				  {% csrf_token %}
+         <b>Customer Name:</b><p>{{i.name}}</p>
+			   <input type="hidden" name="custom" value="{{i.pk}}" />
+			   <p><b>Customer Address:</b></p>
+			   <p>{{i.address1}},</p>
+			   <p>{{i.address2}}</p>
+			   <p><b>City:</b>{{i.city}}</p>
+			   <p><b>State:</b>{{i.state}}</p>
+			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
+			   <p><b>restriction level is :</b>{{i.reslev}}</p>
+			 <!-- <a href="unidel/" type="text" name="orderername" >press</a>--> 
+			   <button type="submit">Pick</button>
+			</form>		
+	  <!--
+	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
+	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
+		-->
+        </div>
+    </li>
+    {% endfor %}
+
+
+  </ul>
+  {% endif %}
+
+  {% if user.vacinated == 0 %}
+  {% for i in listreslev1 %}
+    <li class="cards_item">
+	<form id="form-id" method="post" action="unidel/">
+        <div class="card_content">
+	
+				  {% csrf_token %}
+         <b>Customer Name:</b><p>{{i.name}}</p>
+			   <input type="hidden" name="custom" value="{{i.pk}}"/>
+			   <p><b>Customer Address:</b></p>
+			   <p>{{i.address1}},</p>
+			   <p>{{i.address2}}</p>
+			   <p><b>City:</b>{{i.city}}</p>
+			   <p><b>State:</b>{{i.state}}</p>
+			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
+			   <p><b>restriction level is :</b>{{i.reslev}}</p>
+			 <!-- <a href="unidel/" type="text" name="orderername" >press</a>--> 
+			   <button type="submit">Pick</button>
+			</form>		
+	  <!--
+	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
+	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
+		-->
+        </div>
+    </li>
+    {% endfor %}
+
+
+  </ul>
+  {% endif %}
 		<!--
+  }
 	{% for i in lor %}
 	<br>
 	  <p>restriction level is :{{i.restrictionlevel}}</p>
@@ -126,15 +198,18 @@
      </div>
 	-->
 
-
-
 </body>
 <style type="text/css">
 body
 {
 	background:linear-gradient(240deg,rgba(192, 25, 25, 0.753),rgb(6, 19, 204));
 	background-size: 100%;
+	height: 100bh;
 	background-repeat: no-repeat;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 	#nav{

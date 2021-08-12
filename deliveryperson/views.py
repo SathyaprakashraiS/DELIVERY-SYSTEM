@@ -15,6 +15,7 @@ def restrictionfinder(request):
 	testlist=Orderer.objects.all().filter(city=dboycity.lower())
 	clist=Area.objects.all().filter(city__name=dboycity.lower())
 	alist=Orderer.objects.all().filter(city=dboycity.lower())
+	vacdno=request.user.vacinated
 	pervaikala=[]
 	for string in clist:
 		obj=[]
@@ -23,6 +24,9 @@ def restrictionfinder(request):
 		obj=obj.filter(areaname__contains=string)
 		if testlist.filter(address2__contains=string):
 			testlist.filter(address2__contains=string).update(reslev=string.restrictionlevel)
+	listreslev1=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=1)
+	listreslev2=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=2)
+	listreslev3=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=3)
 	lor=City.objects.all().filter(name=dboycity.lower())
 	result=list(chain(dlist,pervaikala))
 
@@ -35,9 +39,10 @@ def restrictionfinder(request):
 	dlist=Orderer.objects.all().filter(city=Lower(dboycity))
 	lor=City.objects.all()
 	'''
-	return render(request,'delivery.html',{'dboycity':dboycity,'dlist':dlist,'lor':lor,'linkgen1':linkgen1,'linkgen2':linkgen2,'alist':alist,'obj':obj,'result':result,'testlist':testlist})
+	return render(request,'delivery.html',{'dboycity':dboycity,'dlist':dlist,'lor':lor,'linkgen1':linkgen1,'linkgen2':linkgen2,'vacdno':vacdno,'alist':alist,'result':result,'testlist':testlist,'listreslev1':listreslev1,'listreslev2':listreslev2,'listreslev3':listreslev3})
 
 def unidel(request):
-	idname=request.GET['orderername']
-	obj=Orderer.objects.all().filter(name=idname)
-	return render(request,'unidel.html',{'idname':idname})	
+	a = request.POST.get('custom')
+	print(a)
+	obj = Orderer.objects.filter(pk__exact=a)
+	return render(request,'unidel.html',{'obj':obj})	 

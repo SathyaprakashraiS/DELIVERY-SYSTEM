@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        {% for i in obj %}
+        <h1>{{i.name}}</h1>
+        <b>Customer Name:</b><p>{{i.name}}</p>
+			   <input type="hidden" name="custom" value="{{i.pk}}" />
+			   <p><b>Customer Address:</b></p>
+			   <p>{{i.address1}},</p>
+			   <p>{{i.address2}}</p>
+			   <p><b>City:</b>{{i.city}}</p>
+			   <p><b>State:</b>{{i.state}}</p>
+			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
+			   <p><b>restriction level is :</b>{{i.reslev}}</p>
+        {% endfor %}
+    </body>
+</html>
