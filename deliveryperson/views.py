@@ -24,6 +24,7 @@ def restrictionfinder(request):
 		obj=obj.filter(areaname__contains=string)
 		if testlist.filter(address2__contains=string):
 			testlist.filter(address2__contains=string).update(reslev=string.restrictionlevel)
+			testlist.filter(address2__contains=string).update(omaplink=string.maplink)
 	listreslev1=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=1)
 	listreslev2=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=2)
 	listreslev3=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=3)
