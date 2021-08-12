@@ -32,6 +32,9 @@
 	      <li class="nav-item active">
 	        <a id="txt" class="nav-link" href="delivery/" style="color:#FFFFFF"><b>Delivery </b><span class="sr-only">(current)</span></a>
 	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" style="color:#FFFFFF" href="vaccine/">Vaccine Form <span class="sr-only">(current)</span></a>
+	      </li>
 	 	{% endif %}
 
 	    </ul>
@@ -63,27 +66,32 @@
 	    {% endif %}
 	  </div>
 	</nav>
+
 	
 	<div class="container">
 
 		
 		
 	
-	<h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:#FFFFFF;text-align: center;">DELIVERY CART</h1>
+	<h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:#FFFFFF;text-align: center;">DELIVERY LIST</h1>
   <ul class="cards">
     {% for i in dlist %}
     <li class="cards_item">
         <div class="card_content">
          <p><b>Customer Name:</b>{{i.name}}</p>
-	  <p><b>Customer Address:</b></p>
-	  <p>{{i.address1}},</p>
-	  <p>{{i.address2}}</p>
-	  <p><b>City:</b>{{i.city}}</p>
-	  <p><b>State:</b>{{i.state}}</p>
-	  <p><b>Zipcode:</b>{{i.zipcode}}</p>
-	  <p><b>restriction level is :</b>{{i.reslev}}</p>
+			   <p><b>Customer Address:</b></p>
+			   <p>{{i.address1}},</p>
+			   <p>{{i.address2}}</p>
+			   <p><b>City:</b>{{i.city}}</p>
+			   <p><b>State:</b>{{i.state}}</p>
+			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
+			   <p><b>restriction level is :</b>{{i.reslev}}</p>
+			   <a href="unidel/" type="text" name="orderername" >press</a>
+			   <button type="text" class="buttondirection" name="orderername" value="{{i.name}}" href="unidel/">Pick</button>
+	  <!--
 	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
 	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
+		-->
         </div>
     </li>
     {% endfor %}
@@ -152,6 +160,7 @@ body
 .buttondirection{
   background-color: #006BFF; /* Green */
   border-radius: 15%;
+  margin-left:40%;
 }
 
 .buttondirection:hover{

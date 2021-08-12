@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 urlpatterns = [
-    path('',views.restrictionfinder,name="lorindentifier"),#levelofrestriction
+    path('',views.restrictionfinder,name="lorindentifier"),
+    path('unidel/',views.unidel,name="unidel"),#levelofrestriction
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

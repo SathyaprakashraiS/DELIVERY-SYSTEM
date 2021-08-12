@@ -36,3 +36,8 @@ def restrictionfinder(request):
 	lor=City.objects.all()
 	'''
 	return render(request,'delivery.html',{'dboycity':dboycity,'dlist':dlist,'lor':lor,'linkgen1':linkgen1,'linkgen2':linkgen2,'alist':alist,'obj':obj,'result':result,'testlist':testlist})
+
+def unidel(request):
+	idname=request.GET['orderername']
+	obj=Orderer.objects.all().filter(name=idname)
+	return render(request,'unidel.html',{'idname':idname})	
