@@ -81,11 +81,7 @@
 	  <p><b>City:</b>{{i.city}}</p>
 	  <p><b>State:</b>{{i.state}}</p>
 	  <p><b>Zipcode:</b>{{i.zipcode}}</p>
-	  {% for j in lor %}
-		{% if j.name == i.city %}
-	  		<p>restriction level is :{{j.restrictionlevel}}</p>
-		{% endif %}
-	  {% endfor %}
+	  <p><b>restriction level is :</b>{{i.reslev}}</p>
 	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
 	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
         </div>
@@ -99,7 +95,6 @@
 	<br>
 	{% endfor %}
 	-->
-	<p>{{"asdasdasd" | to_and}}</p>
 	<!--
 	{% for i in linkgen1 %}
 	<p>{{i}}</p>
@@ -110,6 +105,8 @@
 	<p>{{i}}</p>
 	{% endfor %}
 	-->
+
+
 </div>
 </div>
 	<!-- https://www.google.co.in/maps/place/lig+colony,+k+k+nagar,+madurai,+tamil+nadu -->
@@ -120,6 +117,7 @@
 
      </div>
 	-->
+
 
 
 </body>

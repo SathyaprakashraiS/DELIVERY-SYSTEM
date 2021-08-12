@@ -29,13 +29,14 @@ class Orderer(models.Model):
 	count=models.FloatField(default=0)
 	quantity=models.FloatField(default=0)
 	customerhousetype=models.CharField(max_length=5,default='1')
+	reslev=models.FloatField(default=2)
 
 	def save(self,*args,**kwargs):
 		self.city=self.city.lower()
 		self.add1link=self.address1.replace(",",",+")
-		self.add1link=self.address1.replace(" ","+")
+		self.add1link=self.add1link.replace(" ","+")
 		self.add2link=self.address2.replace(",",",+")
-		self.add2link=self.address2.replace(" ","+")
+		self.add2link=self.add2link.replace(" ","+")
 		super().save(*args,**kwargs)
 
 	def __str__(self):
