@@ -125,5 +125,5 @@ def processOrder(request):
 
 def orderhistory(request):
 	uemail=request.user.email
-	obj=Orderer.objects.all().filter(email=uemail)
+	obj=Orderer.objects.all().filter(email=uemail,done=3)
 	return render(request,'ohistory.html',{'uemail':uemail,'obj':obj})

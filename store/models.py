@@ -31,6 +31,7 @@ class Orderer(models.Model):
 	customerhousetype=models.CharField(max_length=5,default='1')
 	reslev=models.FloatField(default=2)
 	omaplink=models.CharField(max_length=1000,null=True)
+	done=models.CharField(max_length=5,default=0)
 
 	def save(self,*args,**kwargs):
 		self.city=self.city.lower()

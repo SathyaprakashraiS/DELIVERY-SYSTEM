@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse,HttpResponseRedirect
 from store.models import *
 from city.models import *
 from .models import *
@@ -25,9 +26,9 @@ def restrictionfinder(request):
 		if testlist.filter(address2__contains=string):
 			testlist.filter(address2__contains=string).update(reslev=string.restrictionlevel)
 			testlist.filter(address2__contains=string).update(omaplink=string.maplink)
-	listreslev1=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=1)
-	listreslev2=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=2)
-	listreslev3=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=3)
+	listreslev1=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=1,done=0.0)
+	listreslev2=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=2,done=0.0)
+	listreslev3=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=3,done=0.0)
 	lor=City.objects.all().filter(name=dboycity.lower())
 	result=list(chain(dlist,pervaikala))
 
@@ -46,4 +47,23 @@ def unidel(request):
 	a = request.POST.get('custom')
 	print(a)
 	obj = Orderer.objects.filter(pk__exact=a)
-	return render(request,'unidel.html',{'obj':obj})	 
+	level=Orderer.objects.values_list('reslev').filter(pk__exact=a)
+	return render(request,'unidel.html',{'obj':obj,'level':level})
+
+def modifyasdelivered(request):
+	a = request.GET['custom']
+	obj = Orderer.objects.filter(pk__exact=a)
+	obj=obj.update(done=3)
+	return HttpResponseRedirect("/delivery")
+
+def modifyasfake(request):
+	a = request.GET['custom']
+	obj = Orderer.objects.filter(pk__exact=a)
+	obj=obj.update(done=2)
+	return HttpResponseRedirect("/delivery")
+
+def modifyasNA(request):
+	a = request.GET['custom']
+	obj = Orderer.objects.filter(pk__exact=a)
+	obj=obj.update(done=1)
+	return HttpResponseRedirect("/delivery")
