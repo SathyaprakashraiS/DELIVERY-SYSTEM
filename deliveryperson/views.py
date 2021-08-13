@@ -26,9 +26,9 @@ def restrictionfinder(request):
 		if testlist.filter(address2__contains=string):
 			testlist.filter(address2__contains=string).update(reslev=string.restrictionlevel)
 			testlist.filter(address2__contains=string).update(omaplink=string.maplink)
-	listreslev1=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=1,done=0.0)
-	listreslev2=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=2,done=0.0)
-	listreslev3=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=3,done=0.0)
+	listreslev1=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=1,done=0)
+	listreslev2=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=2,done=0)
+	listreslev3=Orderer.objects.all().filter(city=dboycity.lower(),reslev__lte=3,done=0)
 	lor=City.objects.all().filter(name=dboycity.lower())
 	result=list(chain(dlist,pervaikala))
 
@@ -45,7 +45,6 @@ def restrictionfinder(request):
 
 def unidel(request):
 	a = request.POST.get('custom')
-	print(a)
 	obj = Orderer.objects.filter(pk__exact=a)
 	level=Orderer.objects.values_list('reslev').filter(pk__exact=a)
 	return render(request,'unidel.html',{'obj':obj,'level':level})
