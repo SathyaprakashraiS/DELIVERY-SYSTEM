@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -74,43 +74,47 @@
 		
 	
 	<h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:#FFFFFF;text-align: center;">DELIVERY LIST</h1>
-  <ul class="cards">
+    <ul class="cards">
 
   	{% if user.vacinated == 2 %}
 	{% for i in listreslev3 %}
     <li class="cards_item">
 	<form id="form-id" method="post" action="unidel/">
-        <div class="card_content">
+        
 	
 				  {% csrf_token %}
-         <b>Customer Name:</b><p>{{i.name}}</p>
-			   <input type="hidden" name="custom" value="{{i.pk}}" />
-			   <p><b>Customer Address:</b></p>
-			   <p>{{i.address1}},</p>
-			   <p>{{i.address2}}</p>
-			   <p><b>City:</b>{{i.city}}</p>
-			   <p><b>State:</b>{{i.state}}</p>
-			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
-			   <p><b>restriction level is :</b>{{i.reslev}}</p>
+		 
+         <p><b><i class="fa fa-male"></i> Customer Name:</b>{{i.name}}
+			   <input type="hidden" name="custom" value="{{i.pk}}"/></p><hr>
+			   <p><b><i class="fa fa-address-book"></i> Customer Address:</b></p>
+			   {{i.address1}}
+			   {{i.address2}}
+			   <p></p><hr>
+			   <p><b><i class="fa fa-map-marker"></i> City:</b>{{i.city}}</p><hr>
+			   <p><b><i class="fa fa-map-marker"></i> State:</b>{{i.state}}</p><hr>
+			   <p><b><i class="fa fa-map-marker"></i>Zipcode:</b>{{i.zipcode}}</p><hr>
+			   <p><b><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+				restriction level is :</b>{{i.reslev}}</p>
 			 <!-- <a href="unidel/" type="text" name="orderername" >press</a>--> 
-			   <button type="submit">Pick</button>
+			   <button id="bt" type="submit">Pick</button>
 			</form>		
 	  <!--
 	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
 	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
 		-->
-        </div>
+ 
     </li>
     {% endfor %}
 
 
   </ul>
+
   {% endif %}
   {% if user.vacinated == 1 %}
   {% for i in listreslev2 %}
     <li class="cards_item">
 	<form id="form-id" method="post" action="unidel/">
-        <div class="card_content">
+      
 	
 				  {% csrf_token %}
          <b>Customer Name:</b><p>{{i.name}}</p>
@@ -123,13 +127,13 @@
 			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
 			   <p><b>restriction level is :</b>{{i.reslev}}</p>
 			 <!-- <a href="unidel/" type="text" name="orderername" >press</a>--> 
-			   <button type="submit">Pick</button>
+			   <button id="bt" type="submit">Pick</button>
 			</form>		
 	  <!--
 	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
 	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
 		-->
-        </div>
+      
     </li>
     {% endfor %}
 
@@ -141,26 +145,27 @@
   {% for i in listreslev1 %}
     <li class="cards_item">
 	<form id="form-id" method="post" action="unidel/">
-        <div class="card_content">
+     
 	
 				  {% csrf_token %}
-         <b>Customer Name:</b><p>{{i.name}}</p>
+                <b>Customer Name:</b><p>{{i.name}}</p>
 			   <input type="hidden" name="custom" value="{{i.pk}}"/>
 			   <p><b>Customer Address:</b></p>
 			   <p>{{i.address1}},</p>
 			   <p>{{i.address2}}</p>
+			   
 			   <p><b>City:</b>{{i.city}}</p>
 			   <p><b>State:</b>{{i.state}}</p>
 			   <p><b>Zipcode:</b>{{i.zipcode}}</p>
 			   <p><b>restriction level is :</b>{{i.reslev}}</p>
 			 <!-- <a href="unidel/" type="text" name="orderername" >press</a>--> 
-			   <button type="submit">Pick</button>
+			   <button id="bt" type="submit">Pick</button>
 			</form>		
 	  <!--
 	  <button class="buttondirection" style="float: left;" href="#">Direction</button>
 	  <button class="buttondelivered" style="float: right;" href="#">Delivered</button>
 		-->
-        </div>
+
     </li>
     {% endfor %}
 
@@ -202,13 +207,50 @@
 <style type="text/css">
 body
 {
-	background:linear-gradient(240deg,rgba(192, 25, 25, 0.753),rgb(6, 19, 204));
+	
+	background: -webkit-linear-gradient(left, rgb(240, 157, 4), rgb(255, 103, 1), rgb(231, 58, 5), rgb(255, 0, 0));
 	background-size: 100%;
 	height: cover;
+}
+.container{
+	width:100%;
+}
+.card_content{
+	width:340px;
+	background-color: aqua;
+	//background:linear-gradient(240deg,rgba(204, 16, 16, 0.753),rgb(255, 255, 255));
+}
+#bt{
+	width:100%;
+	background-color:rgb(248, 248, 248);
+	color:rgb(0, 0, 0);
+	font-size:16px;
+	font-style: bold;
+	border:5px solid #ff981a
+}
+.cards_item {
+	width:340px;
+  display: flex;
+  margin-bottom:20px;
+}
+b{
+	color:#fc3200;
+	
+}
+form{
+	width:340px;
+    background-color:rgb(255, 255, 255);
+	color:#000000;
+	border:5px solid black;
+	padding:5px 5px 5px 5px;
+
 }
 
 textarea:focus, input:focus{
     outline: none;
+}
+form hr {
+  border-color: red;
 }
 
 	#nav{
@@ -219,22 +261,14 @@ textarea:focus, input:focus{
 		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 	}
 	
-	.inner{
-		width:400px;
-		margin-top:20px;
-		display:flex;
-		border:5px solid black;
-		flex-flow: column;
-		align-items: center;
-		
-	}
+
 	#b{
 		color:black;
 	}
 .buttondirection{
   background-color: #006BFF; /* Green */
   border-radius: 15%;
-  margin-left:40%;
+ 
 }
 
 .buttondirection:hover{
@@ -249,11 +283,7 @@ textarea:focus, input:focus{
   transform: scale(1.15);
 }
 
-.main{
-  background-color: #FFFFFF;/* GIVE COLOR AROUND CARDS DIVISION */
-  max-width: 100%;
-  margin: 0 auto;
-}
+
 /*
 h1 {
     font-size: 24px;
@@ -269,7 +299,7 @@ img {
 }
 
 .btn {
-  color: #ffffff;
+  color: #ec9191a1;
   padding: 0.8rem;
   font-size: 14px;
   text-transform: uppercase;
@@ -287,6 +317,9 @@ img {
 }
 
 .cards {
+	width:100%;
+	//background:linear-gradient(240deg,rgba(192, 25, 25, 0.753),rgb(6, 19, 204));
+	resize:none;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -294,10 +327,7 @@ img {
   padding: 0;
 }
 
-.cards_item {
-  display: flex;
-  padding: 1rem;
-}
+
 
 @media (min-width: 40rem) {
   .cards_item {
