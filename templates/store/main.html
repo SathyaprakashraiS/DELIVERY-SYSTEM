@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 	<script type="text/javascript">
@@ -63,9 +63,9 @@
 </head>
 <body>
 
-	<nav id="nav" class="navbar navbar-expand-lg ">
+	<nav id="nav" class="navbar navbar-expand-lg  ">
 	  <a id="txt"class="navbar-brand" href="{% url 'store' %}"><b>SHOP</b></a>
-	  <button class="navbar-toggler" type="button" style="background-color: #FF8F00;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  <button class="navbar-toggler navbar-light bg-warning" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 
@@ -138,6 +138,9 @@
 	#txt{
 		color:rgb(255, 255, 255);
 		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	}
+	b{
+		color:#fc3200;
 	}
 	body{
 		background: -webkit-linear-gradient(left, rgb(240, 157, 4), rgb(255, 103, 1), rgb(231, 58, 5), rgb(255, 0, 0));
