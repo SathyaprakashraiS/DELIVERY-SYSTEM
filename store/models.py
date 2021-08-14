@@ -32,7 +32,8 @@ class Orderer(models.Model):
 	reslev=models.FloatField(default=2)
 	omaplink=models.CharField(max_length=1000,default="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.001696423075!2d79.15722781561198!3d12.971742990855768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad479f0ccbe067%3A0xfef222e5f36ecdeb!2sVellore%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1628800616114!5m2!1sen!2sin",null=True)
 	done=models.CharField(max_length=5,default=0)
-
+	contactno=models.CharField(max_length=10,default="test")
+	
 	def save(self,*args,**kwargs):
 		self.city=self.city.lower()
 		self.add1link=self.address1.replace(",",",+")

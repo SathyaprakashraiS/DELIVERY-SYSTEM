@@ -13,7 +13,7 @@
 <body>
 
 	<nav id="nav" class="navbar navbar-expand-lg">
-	  <a id="txt" class="navbar-brand" href="{% url 'store' %}"><b>SHOP</b></a>
+	  <a id="txt" class="navbar-brand" href="{% url 'store' %}"><b style="color:#fc3200">SHOP</b></a>
 	  <button class="navbar-toggler navbar-light bg-warning" type="button" data-toggle="collapse" style="background-color: #FF8F00;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -25,7 +25,7 @@
 	      </li>-->
 	      {% if user.is_authenticated %}
 	      <li class="nav-item active">
-	        <a id="txt" class="nav-link" href="/history"><b>History </b><span class="sr-only">(current)</span></a>
+	        <a id="txt" class="nav-link" href="/history"><b style="color:#fc3200">History </b><span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
 	 	{% if user.is_dboy %}
@@ -66,7 +66,7 @@
 	    {% endif %}
 	  </div>
 	</nav>
-
+<h1 style="text-align:center;">Previously Ordered</h1>
 	<div class="container">
 		{% for i in obj %}
 		<p><b>Name:</b>{{i.name}}</p>
@@ -77,7 +77,20 @@
 		<p><b>Items ordered:</b>{{i.count}}</p>
 		<p><b>Total amount:</b>{{i.quantity}}</p>
 		{% endfor %}
-		
+	</div>
+
+<h1 style="text-align:center;">Orders Yet to Arrive</h1>
+	<div class="container">
+		{% for i in cobj %}
+		<p><b>Name:</b>{{i.name}}</p>
+		<p><b>Delivered address:</b>{{i.address1}}</p>
+		<p>{{i.address2}}</p><p>{{i.city}}</p>
+		<p>{{i.state}}</p><p>{{i.zipcode}}</p>
+		<p>{{i.country}}</p>
+		<p><b>Items ordered:</b>{{i.count}}</p>
+		<p><b>Total amount:</b>{{i.quantity}}</p>
+		{% endfor %}
+	</div>
 	
 	
  
@@ -99,7 +112,6 @@
 	<p>{{i}}</p>
 	{% endfor %}
 	-->
-</div>
 
 	<!-- https://www.google.co.in/maps/place/lig+colony,+k+k+nagar,+madurai,+tamil+nadu -->
 

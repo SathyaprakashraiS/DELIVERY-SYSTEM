@@ -22,7 +22,7 @@
     <body>
 
 <nav id="nav" class="navbar navbar-expand-lg">
-	  <a id="txt" class="navbar-brand" href="{% url 'store' %}"><b>SHOP</b></a>
+	  <a id="txt" class="navbar-brand" href="{% url 'store' %}"><b style="color:#FFFFFF;">SHOP</b></a>
 	  <button class="navbar-toggler navbar-light bg-warning" type="button" data-toggle="collapse" style="background-color: #FF8F00;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -34,12 +34,12 @@
 	      </li>-->
 	      {% if user.is_authenticated %}
 	      <li class="nav-item active">
-	        <a id="txt" class="nav-link" href="/history"><b>History </b><span class="sr-only">(current)</span></a>
+	        <a id="txt" class="nav-link" href="/history"><b style="color:#FFFFFF;">History </b><span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
 	 	{% if user.is_dboy %}
 	      <li class="nav-item active">
-	        <a id="txt" class="nav-link" href="delivery/" style="color:#FFFFFF">Delivery <span class="sr-only">(current)</span></a>
+	        <a id="txt" class="nav-link" href="delivery/"><b>Delivery </b><span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" style="color:#FFFFFF" href="vaccine/">Vaccine Form <span class="sr-only">(current)</span></a>
@@ -81,7 +81,9 @@
         {% for i in obj %}
 		       <div class="inner">
 				<div class="inner2">
-      			<h1 style="text-align:center;color:#FFFFFF;"><u style="color:#FF0000;"><h2 style="color:#FFFFFF;">DETAILS</h2></u></h1>
+      			<h1 style="text-align:center;color:#FFFFFF;"><u style="color:#FF0000;"><h2 style="color:#000000;">DETAILS</h2></u></h1>
+      			<br>
+              <div class="marginer">
               <b><i class="fa fa-male"></i>Customer Name:</b>{{i.name}}<p></p>
               <input type="hidden" name="custom" value="{{i.pk}}"/>
 			   <!--<input type="hidden" name="custom" value="{{i.pk}}" />-->
@@ -90,20 +92,35 @@
 			   <p>{{i.address2}}</p>
 			   <p><b><i class="fa fa-map-marker"></i>City:</b>{{i.city}}</p>
 			   <p><b><i class="fa fa-map-marker"></i>Zipcode:</b>{{i.zipcode}}</p>
+			   <p><b><i class="fa fa-map-marker"></i>Amount:</b>₹{{i.quantity}}</p>
 
 			   {% if i.reslev == 3 %}
-			   	<p style="color:#FF0000"><b style="color:#FF0000;">HIGH</b></p>
-			   	<p>Tips poduvom konja neram kalichu</p>
+			   	<b>RISK: <b style="color:#FF0000;">HIGH</b></b>
+			   	<!--<p>->Wear Full complement of PPE</p>-->
+			   	<br>
+			   	<p></p>
+			   	<p>->Wear Reusable Apron provided<br>
+			   	->Use provided N-95 respirator mask<br>
+			   	->Wear Face shield, Goggles<br>
+			   	->Request user for online payment if available<br>
+			   	->Avoid any physical contact with customer or customer surrounding</p>
 			   {% endif %}
 
 			   {% if i.reslev == 2 %}
-			   	<p style="color:#FFFB00"><b style="color:#FF0000;">MEDIUM</b></p>
-			   	<p>Tips poduvom konja neram kalichu</p>
+			   	<b>RISK: <b style="color:#E0D621;">MEDIUM</b></b>
+			   	<br>
+			   	<p></p>
+			   	<p>->Wear N-95 Respiratory mask, Gloves, Goggles, Face shield provided
+			   	<br>
+			   	-></p>
 			   {% endif %}
 
 			   {% if i.reslev == 1 %}
-			   	<p style="color:#5AFF00"><b style="color:#FF0000;">LOW</b></p>
-			   	<p>Tips poduvom konja neram kalichu</p>
+			   	<b>RISK: <b style="color:#5AFF00;">LOW</b></b>
+			   	<br>
+			   	<p></p>
+			   	<p>->Wear Triple layer mask, Gloves, Goggles provided<br>
+			   	-></p>
 			   {% endif %}
 
 			   <!--
@@ -120,26 +137,29 @@
 				<p>this is hte hsdiui m ujsdj kdaskjhdsfl; kjkeljk dslj dajnfsgkd ajj srlkkl fsjhjsd vklklf sdjkjhgfsd kljljk</p>-->	
 
 			   <p><b><i class="fa fa-exclamation-triangle"  ></i>restriction level is :</b>{{i.reslev}}</p>
+			   <a href="/delivery"><b style="color:#000000;">BACK</b></a>
+			</div>
 			   <div class="divbtn">
 				<form action="modifyasdelivered">
 				 <input type="hidden" name="custom" value="{{i.pk}}"/>
-				 <h1><button type="submit" class="btn btn-success">kuduthachu</button></h1>
+				 <h1><button type="submit" class="btn btn-success">Delivery</button></h1>
 				</form>
 			 
 				 <form action="modifyasfake">
 				 <input type="hidden" name="custom" value="{{i.pk}}"/>
-				 <h1><button type="submit" class="btn btn-warning">fake address</button></h1>
+				 <h1><button type="submit" class="btn btn-warning">Mock Address</button></h1>
 				 </form>
 			 
 			 <form action="modifyasNA">
 			 <input type="hidden" name="custom" value="{{i.pk}}" />
-			 <h1><button type="submit" class="btn btn-danger">al illa</button></h1>
+			 <h1><button type="submit" class="btn btn-danger">Customer Unavailable</button></h1>
 		 </div>
 			 </form>
 			</div>
 			   <iframe src="{{i.omaplink}}" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 			
 		</div>
+
         {% endfor %}
 	</div>
 </div>
@@ -159,7 +179,7 @@
 	}
 
 	#txt{
-		color:white;
+		color:black;
 		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 	}
 
@@ -169,6 +189,7 @@
 		flex-flow: column;
 		align-items: center;
 		justify-content: center;
+		margin-bottom:2%;
 	}
 	.divbtn{
 		display: flex;
@@ -177,20 +198,22 @@
 	}
 	.btn{
 		margin:10px 10px 10px 10px;
-	
-		
-
 		color:black;
 
+	}
+
+	.marginer
+	{
+		margin-left:10%;
 	}
 
 	.card{
 		min-width: 100vh;
 		margin-top:50px;
 		height:auto;
-		color:white;
-		background-color: black;
-		border:10px solid white;
+		color:black;
+		background-color: white;
+		border:10px solid black;
 	}
 	b{
 		color:#FF7700;
