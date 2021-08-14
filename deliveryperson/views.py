@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
+from django.contrib.auth import get_user_model
 from store.models import *
 from city.models import *
 from .models import *
@@ -57,8 +58,16 @@ def modifyasdelivered(request):
 
 def modifyasfake(request):
 	a = request.GET['custom']
-	obj = Orderer.objects.filter(pk__exact=a)
-	obj=obj.update(done=2)
+	obj = Orderer.objects.all().filter(pk__exact=a)
+	scammail=Orderer.objects.values_list('email').filter(pk__exact=a)
+	scammed=list(Orderer.objects.values_list('email').filter(pk__exact=a))
+	print("scammail:",scammail)
+	Usersq=get_user_model()
+	scammer=Usersq.objects.values_list('email')
+	for i in scammer:
+		for j in scammail:
+			if i==j:
+				Usersq.objects.filter(email=str(i)[2:-3]).update(merit=F('merit')-10)
 	return HttpResponseRedirect("/delivery")
 
 def modifyasNA(request):

@@ -14,5 +14,5 @@ class OrdererForm(forms.ModelForm):
     """Form for the image model"""
     class Meta:
        model = Orderer
-       fields = ('name','email','address1','address2','city','state','zipcode','country','landmark','count','quantity','customerhousetype','contactno')
+       fields = ('name','email','address1','address2','city','state','zipcode','country','landmark','count','quantity','customerhousetype','contactno','paymode')
 		

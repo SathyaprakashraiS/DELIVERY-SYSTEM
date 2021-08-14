@@ -81,6 +81,7 @@
         {% for i in obj %}
 		       <div class="inner">
 				<div class="inner2">
+					<a href="/delivery"><b style="color:#000000;"><i class="fa fa-arrow-left"></i>BACK</b></a>
       			<h1 style="text-align:center;color:#FFFFFF;"><u style="color:#FF0000;"><h2 style="color:#000000;">DETAILS</h2></u></h1>
       			<br>
               <div class="marginer">
@@ -95,23 +96,32 @@
 			   <p><b><i class="fa fa-map-pin" aria-hidden="true"></i>Zipcode:</b>{{i.zipcode}}</p>
 			   <p><b><i class="fa fa-money" aria-hidden="true"></i>Amount:</b>₹{{i.quantity}}</p>
 
+			   {% if i.paymode == '1' %}
+			   <p><b>Transaction Method:</b>Cash on Delivery</p>
+			   <p><b>Payment:</b>Pending</p>
+
+			   {% elif i.paymode == '2' %}
+			   <p><b>Transaction Method:</b>Online</p>
+			   <p><b>Payment:</b>Successful</p>
+			   {% endif %}
+
 			   {% if i.reslev == 3 %}
 			   	<b>RISK: <b style="color:#FF0000;">HIGH</b></b>
 			   	<!--<p>->Wear Full complement of PPE</p>-->
 			   	<br>
 			   	<p></p>
-			   	<p>->Wear Reusable Apron provided<br>
-			   	->Use provided N-95 respirator mask<br>
-			   	->Wear Face shield, Goggles<br>
-			   	->Request user for online payment if available<br>
-			   	->Avoid any physical contact with customer or customer surrounding</p>
+			   	<p><b style="color:#000000;">-></b>Wear Reusable Apron provided<br>
+			   	<b style="color:#000000;">-></b>Use provided N-95 respirator mask<br>
+			   	<b style="color:#000000;">-></b>Wear Face shield, Goggles<br>
+			   	<b style="color:#000000;">-></b>Request user for online payment if available<br>
+			   	<b style="color:#000000;">-></b>Avoid any physical contact with customer or customer surrounding</p>
 			   {% endif %}
 
 			   {% if i.reslev == 2 %}
 			   	<b>RISK: <b style="color:#E0D621;">MEDIUM</b></b>
 			   	<br>
 			   	<p></p>
-			   	<p>->Wear N-95 Respiratory mask, Gloves, Goggles, Face shield provided
+			   	<p><b style="color:#000000;">-></b>Wear N-95 Respiratory mask, Gloves, Goggles, Face shield provided
 			   	<br>
 			   	-></p>
 			   {% endif %}
@@ -120,7 +130,7 @@
 			   	<b>RISK: <b style="color:#5AFF00;">LOW</b></b>
 			   	<br>
 			   	<p></p>
-			   	<p>->Wear Triple layer mask, Gloves, Goggles provided<br>
+			   	<p><b style="color:#000000;">-></b>Wear Triple layer mask, Gloves, Goggles provided<br>
 			   	-></p>
 			   {% endif %}
 
@@ -138,7 +148,7 @@
 				<p>this is hte hsdiui m ujsdj kdaskjhdsfl; kjkeljk dslj dajnfsgkd ajj srlkkl fsjhjsd vklklf sdjkjhgfsd kljljk</p>-->	
 
 			   <p><b><i class="fa fa-exclamation-triangle"  ></i>restriction level is :</b>{{i.reslev}}</p>
-			   <a href="/delivery"><b style="color:#000000;"><i class="fa fa-arrow-left"></i>BACK</b></a>
+			   
 			</div>
 			   <div class="divbtn">
 				<form action="modifyasdelivered">

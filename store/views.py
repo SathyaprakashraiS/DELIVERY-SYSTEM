@@ -53,7 +53,7 @@ def cart(request):
 
 def checkout(request):
 	data = cartData(request)
-	
+	score=request.user.merit
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
@@ -66,7 +66,7 @@ def checkout(request):
 	else:
 		form = OrdererForm()
 
-	context = {'items':items, 'order':order, 'cartItems':cartItems,'form': form}
+	context = {'items':items,'score':score, 'order':order, 'cartItems':cartItems,'form': form}
 	return render(request, 'store/checkout.html', context)
 
 def updateItem(request):

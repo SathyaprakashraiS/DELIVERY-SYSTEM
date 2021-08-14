@@ -33,7 +33,7 @@
    					{{form.state}}<br>
    					<label for="zipcode">Zipcode:</label>
    					{{form.zipcode}}<br>
-   					<label for="country">Vountry:</label>
+   					<label for="country">Country:</label>
    					{{form.country}}<br>
    					<label for="landmark">Landmark:</label>
    					{{form.landmark}}<br>
@@ -43,9 +43,22 @@
    						<option id="customerhousetype" name="customerhousetype" value="2">apartment</option>
    					</select>
    					<br>
-   					<label for="count">count:</label>
+   					{% if score == 60 or score < 60 %}
+   					<label for="paymode">Payment type:</label>
+   					<select name="paymode">
+   						<option id="paymode" name="paymode" value="2">ONLINE TRANSACTION</option>
+   					</select>
+   					{% else %}
+   					<label for="paymode">Payment type:</label>
+   					<select name="paymode">
+   						<option id="paymode" name="paymode" value="1">COD</option>
+   						<option id="paymode" name="paymode" value="2">ONLINE TRANSACTION</option>
+   					</select>
+   					{% endif %}
+   					<br>
+   					<label for="count">Item Count:</label>
   					<input type="text" id="count" name="count" value="{{order.get_cart_items}}" readonly><br>
-  					<label for="quantity">quantity:</label>
+  					<label for="quantity">Amount:</label>
   					<input type="text" id="quantity" name="quantity" value="{{order.get_cart_total|floatformat:2}}" readonly><br>
   					<button type="submit">Submit</button>
   					
