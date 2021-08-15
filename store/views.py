@@ -8,6 +8,7 @@ from .forms import OrdererForm
 from datetime import date
 from django.contrib import messages
 from .forms import CustomUserForm
+from django.http import HttpResponse,HttpResponseRedirect
 
 def viewprofile(request):
     
@@ -62,7 +63,7 @@ def checkout(request):
 		form = OrdererForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return render(request, 'main.html', {'form': form})
+			return HttpResponseRedirect("/delivery",{'form':form})
 	else:
 		form = OrdererForm()
 

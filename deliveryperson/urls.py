@@ -23,6 +23,6 @@ urlpatterns = [
     path('unidel/',views.unidel,name="unidel"),#levelofrestriction
     path('unidel/modifyasdelivered/',views.modifyasdelivered,name="markasdelivered"),
     path('unidel/modifyasfake/',views.modifyasfake,name="markasfake"),
-    path('unidel/modifyasNa/',views.modifyasNA,name="markasNA"),
+    path('unidel/modifyasNA/',views.modifyasNA,name="markasNA"),
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

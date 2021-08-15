@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
     city =models.CharField(max_length=10,default='city')
     formsubmitted = models.BooleanField(default=False)
     vacinated = models.IntegerField(default=0)
-    merit=models.IntegerField(default=1000)
+    merit=models.IntegerField(default=100)
 # Create your models here.
 
 class Orderer(models.Model):

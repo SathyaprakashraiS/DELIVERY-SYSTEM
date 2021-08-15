@@ -13,30 +13,31 @@
 				form.instance.count={{order.get_cart_items}}
 				form.instance.amount={{order.get_cart_total|floatformat:2}}
 							-->
+							<u style="color:#FF0000"><h1 style="text-align:center;color:#000000">ADDRESS</h1></u>
 				<form method="post" enctype="multipart/form-data">
   					{% csrf_token %}
    					<!--{{ form.as_p }}-->
    					<label for="name">Name:</label>
-   					{{form.name}}<br>
+   					<input type="text" id="name" name="name" placeholder="your name"><br>
    					<label for="contactno">Contact No:</label>
    					<!--{{form.contactno}}<br>-->
-   					<input type="text" id="contactno" name="contactno" placeholder="erukumo"><br>
-   					<label for="count">Email:</label>
+   					<input type="text" id="contactno" name="contactno" placeholder="ex: 984333xxxx"><br>
+   					<label for="email">Email:</label>
   					<input type="text" id="email" name="email" value="{{request.user.email}}" readonly><br>
    					<label for="address">Door no & street:</label>
-   					{{form.address1}}<br>
+   					<input type="text" id="address1" name="address1" placeholder="ex: no 1,name of your street"><br>
    					<label for="address">Area:</label>
-   					{{form.address2}}<br>
+   					<input type="text" id="address2" name="address2" placeholder="your areaname"><br>
    					<label for="city">City:</label>
-   					{{form.city}}<br>
+   					<input type="text" id="city" name="city" placeholder="cityname"><br>br>
    					<label for="state">State:</label>
-   					{{form.state}}<br>
+   					<input type="text" id="state" name="state" placeholder="statename"><br>
    					<label for="zipcode">Zipcode:</label>
-   					{{form.zipcode}}<br>
+   					<input type="text" id="zipcode" name="zipcode" placeholder="state zipcode"><br>
    					<label for="country">Country:</label>
-   					{{form.country}}<br>
+   					<input type="text" id="country" name="country" placeholder="country name"><br>
    					<label for="landmark">Landmark:</label>
-   					{{form.landmark}}<br>
+   					<input type="text" id="landmark" name="landmark" placeholder="ex: last house in the opposite stree of mall"><br>
    					<label for="customerhousetype">House type:</label>
    					<select name="customerhousetype">
    						<option id="customerhousetype" name="customerhousetype" value="1">house</option>

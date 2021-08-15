@@ -68,6 +68,7 @@ def modifyasfake(request):
 		for j in scammail:
 			if i==j:
 				Usersq.objects.filter(email=str(i)[2:-3]).update(merit=F('merit')-10)
+				obj=obj.update(done=1)
 	return HttpResponseRedirect("/delivery")
 
 def modifyasNA(request):

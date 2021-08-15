@@ -6,8 +6,15 @@
 	<title>HISTORY</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <!--font awesome-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
@@ -36,7 +43,7 @@
 	        <a class="nav-link" style="color:#FFFFFF" href="vaccine/">Vaccine Form <span class="sr-only">(current)</span></a>
 	      </li>
 	 	{% endif %}
-
+ 
 	    </ul>
 	    {% if user.is_authenticated %}
 	    <div class="form-inline my-2 my-lg-0">
@@ -67,32 +74,38 @@
 	  </div>
 	</nav>
 <h1 style="text-align:center;">Previously Ordered</h1>
-	<div class="container">
-		{% for i in obj %}
-		<p><b>Name:</b>{{i.name}}</p>
-		<p><b>Delivered address:</b>{{i.address1}}</p>
-		<p>{{i.address2}}</p><p>{{i.city}}</p>
-		<p>{{i.state}}</p><p>{{i.zipcode}}</p>
-		<p>{{i.country}}</p>
-		<p><b>Items ordered:</b>{{i.count}}</p>
-		<p><b>Total amount:</b>{{i.quantity}}</p>
-		{% endfor %}
+{% for i in obj %}
+<div class="outer">
+	<div class="inner">
+		
+		<p><b><i class="fa fa-user" aria-hidden="true"></i>Name:</b>{{i.name}}</p><hr>
+		<p><b><i class="fa fa-address-card"></i>Delivered address:</b>{{i.address1}}<br>{{i.address2}}<br>{{i.city}}</p>
+		<hr>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.state}}</p><p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.zipcode}}</p>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.country}}</p><hr>
+		<p><b><i class="fa fa-list" aria-hidden="true"></i>Items ordered:</b>{{i.count}}</p>
+		<p><b><i class="fa fa-money" aria-hidden="true"></i>Total amount:</b>{{i.quantity}}</p>
+		
 	</div>
+</div>
+{% endfor %}
 
 <h1 style="text-align:center;">Orders Yet to Arrive</h1>
-	<div class="container">
-		{% for i in cobj %}
-		<p><b>Name:</b>{{i.name}}</p>
-		<p><b>Delivered address:</b>{{i.address1}}</p>
-		<p>{{i.address2}}</p><p>{{i.city}}</p>
-		<p>{{i.state}}</p><p>{{i.zipcode}}</p>
-		<p>{{i.country}}</p>
-		<p><b>Items ordered:</b>{{i.count}}</p>
-		<p><b>Total amount:</b>{{i.quantity}}</p>
-		{% endfor %}
+{% for i in cobj %}
+<div class="outer">
+	<div class="inner">
+		
+		<p><b><i class="fa fa-user" aria-hidden="true"></i>Name:</b>{{i.name}}</p><hr>
+		<p><b><i class="fa fa-address-card"></i>Delivered address:</b>{{i.address1}}<br>{{i.address2}}<br>{{i.city}}</p>
+		<hr>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.state}}</p><p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.zipcode}}</p>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.country}}</p><hr>
+		<p><b><i class="fa fa-list" aria-hidden="true"></i>Items ordered:</b>{{i.count}}</p>
+		<p><b><i class="fa fa-money" aria-hidden="true"></i>Total amount:</b>{{i.quantity}}</p>
+	
 	</div>
-	
-	
+</div>	
+ {% endfor %}	
  
 		<!--
 	{% for i in lor %}
@@ -132,6 +145,54 @@ body
 	height: cover;
 }
 
+.cards_item {
+	width:340px;
+  display: flex;
+  margin-bottom:20px;
+}
+
+.outer{
+	max-width:100%;
+	height:auto;
+	display:flex;
+	flex-flow:row;
+    align-items:flex-start;
+	margin-left:50px;
+
+}
+
+.inner{
+	width:400px;
+	height:auto;
+	background-color: antiquewhite;
+	display:flex;
+	flex-flow: column;
+	justify-content: space-between;
+	border:5px solid black;
+	padding:10px 10px 10px 10px;
+}
+
+.outer2{
+	max-width:100%;
+	height:auto;
+	display:flex;
+	flex-flow:row;
+    align-items:flex-start;
+	margin-left:50px;
+
+}
+
+.inner2{
+	width:400px;
+	height:auto;
+	background-color: antiquewhite;
+	display:flex;
+	flex-flow: column;
+	justify-content: space-between;
+	border:5px solid black;
+	padding:10px 10px 10px 10px;
+}
+
 	#nav{
 		background-color:black;
 	}
@@ -140,119 +201,11 @@ body
 		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 	}
 	
-	.inner{
-		width:400px;
-		margin-top:20px;
-		display:flex;
-		border:5px solid black;
-		flex-flow: column;
-		align-items: center;
-		
-	}
+
 	#b{
 		color:black;
 	}
-.buttondirection{
-  background-color: #006BFF; /* Green */
-  border-radius: 15%;
-}
 
-.buttondirection:hover{
-  transform: scale(1.15);
-}
-.buttondelivered{
-  background-color: #2CFF00; /* Green */
-  border-radius: 15%;
-}
-
-.buttondelivered:hover{
-  transform: scale(1.15);
-}
-
-.main{
-  background-color: #FFFFFF;/* GIVE COLOR AROUND CARDS DIVISION */
-  max-width: 100%;
-  margin: 0 auto;
-}
-/*
-h1 {
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
-}
-*/
-img {
-  height: auto;
-  width: 100%;
-  height:300px;
-  vertical-align: middle;
-}
-
-.btn {
-  color: #ffffff;
-  padding: 0.8rem;
-  font-size: 14px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  font-weight: 400;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-}
-
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cards_item {
-  display: flex;
-  padding: 1rem;
-}
-
-@media (min-width: 40rem) {
-  .cards_item {
-    width: 50%;
-  }
-}
-
-@media (min-width: 56rem) {
-  .cards_item {
-    width: 33.3333%;
-  }
-}
-
-.card {
-  width:100%;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.card_content {
-  padding: 1rem;
-  background: #FFFFFF;
-  border-radius: 10%;
-}
-
-@media (max-width: 480px)
-{ 
-  .cards_item {
-  width:100%;
-  display: flex;
-  padding: 1rem;
-}
 }
 </style>
 </html>
