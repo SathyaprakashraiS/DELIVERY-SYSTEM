@@ -74,39 +74,46 @@
 	  </div>
 	</nav>
 <h1 style="text-align:center;">Previously Ordered</h1>
-{% for i in obj %}
+
 <div class="outer">
+	{% for i in obj %}
 	<div class="inner">
-		
-		<p><b><i class="fa fa-user" aria-hidden="true"></i>Name:</b>{{i.name}}</p><hr>
-		<p><b><i class="fa fa-address-card"></i>Delivered address:</b>{{i.address1}}<br>{{i.address2}}<br>{{i.city}}</p>
+		<p><b><i class="fa fa-user" aria-hidden="true"></i>Name: </b>{{i.name}}</p>
 		<hr>
-		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.state}}</p><p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.zipcode}}</p>
-		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.country}}</p><hr>
+		<p><b><i class="fa fa-address-card"></i>Delivered address: </b><br>{{i.address1}}<br>{{i.address2}}
+		<hr>
+		<p><i class="fa fa-building"></i><b>City: </b>{{i.city}}</p>
+		<hr>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i><b>State: </b>{{i.state}}</p>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i><b>Zipcode: </b>{{i.zipcode}}</p>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i><b>Country: </b>{{i.country}}</p>
+		<hr>
 		<p><b><i class="fa fa-list" aria-hidden="true"></i>Items ordered:</b>{{i.count}}</p>
 		<p><b><i class="fa fa-money" aria-hidden="true"></i>Total amount:</b>{{i.quantity}}</p>
-		
 	</div>
+	{% endfor %}
 </div>
-{% endfor %}
 
 <h1 style="text-align:center;">Orders Yet to Arrive</h1>
-{% for i in cobj %}
+
 <div class="outer">
+	{% for i in cobj %}
 	<div class="inner">
-		
-		<p><b><i class="fa fa-user" aria-hidden="true"></i>Name:</b>{{i.name}}</p><hr>
-		<p><b><i class="fa fa-address-card"></i>Delivered address:</b>{{i.address1}}<br>{{i.address2}}<br>{{i.city}}</p>
+		<p><b><i class="fa fa-user" aria-hidden="true"></i>Name: </b>{{i.name}}</p>
 		<hr>
-		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.state}}</p><p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.zipcode}}</p>
-		<p><i class="fa fa-map-pin" aria-hidden="true"></i>{{i.country}}</p><hr>
+		<p><b><i class="fa fa-address-card"></i>Delivered address: </b><br>{{i.address1}}<br>{{i.address2}}
+		<hr>
+		<p><i class="fa fa-building"></i><b>City: </b>{{i.city}}</p>
+		<hr>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i><b>State: </b>{{i.state}}</p>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i><b>Zipcode: </b>{{i.zipcode}}</p>
+		<p><i class="fa fa-map-pin" aria-hidden="true"></i><b>Country: </b>{{i.country}}</p>
+		<hr>
 		<p><b><i class="fa fa-list" aria-hidden="true"></i>Items ordered:</b>{{i.count}}</p>
 		<p><b><i class="fa fa-money" aria-hidden="true"></i>Total amount:</b>{{i.quantity}}</p>
-	
 	</div>
-</div>	
- {% endfor %}	
- 
+	{% endfor %}
+</div>
 		<!--
 	{% for i in lor %}
 	<br>
@@ -145,12 +152,6 @@ body
 	height: cover;
 }
 
-.cards_item {
-	width:340px;
-  display: flex;
-  margin-bottom:20px;
-}
-
 .outer{
 	max-width:100%;
 	height:auto;
@@ -162,11 +163,14 @@ body
 }
 
 .inner{
+	display: flex;
+  position: relative;
 	width:400px;
-	height:auto;
-	background-color: antiquewhite;
+	height:500px;
+	background-color: white;
 	display:flex;
 	flex-flow: column;
+	margin-right: 6%;
 	justify-content: space-between;
 	border:5px solid black;
 	padding:10px 10px 10px 10px;
@@ -185,7 +189,7 @@ body
 .inner2{
 	width:400px;
 	height:auto;
-	background-color: antiquewhite;
+	background-color:white;
 	display:flex;
 	flex-flow: column;
 	justify-content: space-between;
@@ -205,8 +209,11 @@ body
 	#b{
 		color:black;
 	}
+	div hr{
+		background-color:orangered;
+	}
 
-}
+
 </style>
 </html>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
