@@ -1,6 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
@@ -61,7 +62,7 @@
   					<input type="text" id="count" name="count" value="{{order.get_cart_items}}" readonly><br>
   					<label for="quantity">Amount:</label>
   					<input type="text" id="quantity" name="quantity" value="{{order.get_cart_total|floatformat:2}}" readonly><br>
-  					<button type="submit">Submit</button>
+  					<button type="submit">Proceed payment</button>
   					
 				</form>
 				<!--

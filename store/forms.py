@@ -4,8 +4,8 @@ from django.forms import ModelForm
 from .models import Orderer,CustomUser
 
 class CustomUserForm(forms.ModelForm):
-
-    class Meta:
+     """Form for the image model"""
+     class Meta:
         model = CustomUser 
         fields ='__all__'
 

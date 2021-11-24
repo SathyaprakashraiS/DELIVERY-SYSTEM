@@ -53,6 +53,7 @@ def cart(request):
 	return render(request, 'store/cart.html', context)
 
 def checkout(request):
+	failed=1
 	data = cartData(request)
 	score=request.user.merit
 	cartItems = data['cartItems']
@@ -64,6 +65,13 @@ def checkout(request):
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect("/delivery",{'form':form})
+		else:
+			print("OVER HERE IN ELSE")
+			form = OrdererForm()
+			failed=0
+			context = {'items':items,'score':score, 'order':order, 'cartItems':cartItems,'form': form,'failed':failed}
+			return render(request, 'store/checkout.html', context)
+
 	else:
 		form = OrdererForm()
 
